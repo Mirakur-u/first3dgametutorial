@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnlg8m8qilx8o"]
+[gd_scene load_steps=5 format=3 uid="uid://bnlg8m8qilx8o"]
+
+[ext_resource type="Script" path="res://Scripts/floor.gd" id="1_hk5aq"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_yk6ds"]
 
@@ -8,8 +10,12 @@
 size = Vector3(1, 1, 0.999756)
 
 [node name="Floor" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 3
 lock_rotation = true
 freeze = true
+max_contacts_reported = 1
+script = ExtResource("1_hk5aq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 200, 0, 0, 0)
