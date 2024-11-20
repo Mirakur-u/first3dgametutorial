@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5043qmioqmbm"]
+
+[ext_resource type="Script" path="res://Scripts/finish_line.gd" id="1_hmhbi"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_sna6t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qjolc"]
+albedo_color = Color(1.37173e-06, 0.627968, 0.120385, 1)
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+emission_energy_multiplier = 3.7
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aji3b"]
+albedo_color = Color(0.75473, 0.000468793, 0.761048, 1)
+emission_enabled = true
+emission = Color(0, 0, 0.717647, 1)
+emission_energy_multiplier = 7.11
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yyjru"]
+size = Vector3(8.02173, 5.69922, 1)
+
+[node name="FinishLine" type="Node3D"]
+script = ExtResource("1_hmhbi")
+
+[node name="LeftColumn" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 1.5, 0, 0, 0, 0.2, -4, 0, 0)
+mesh = SubResource("CylinderMesh_sna6t")
+surface_material_override/0 = SubResource("StandardMaterial3D_qjolc")
+
+[node name="RightColumn" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 1.5, 0, 0, 0, 0.2, 4, 0, 0)
+mesh = SubResource("CylinderMesh_sna6t")
+surface_material_override/0 = SubResource("StandardMaterial3D_aji3b")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.849599, 0)
+shape = SubResource("BoxShape3D_yyjru")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

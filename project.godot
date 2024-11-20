@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="First3DGameTutorial"
-run/main_scene="res://Scenes/main.tscn"
+run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+LevelManager="*res://Scripts/level_manager.gd"
 
 [input]
 
